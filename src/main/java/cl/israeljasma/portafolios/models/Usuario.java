@@ -1,11 +1,19 @@
 package cl.israeljasma.portafolios.models;
 
+import jakarta.validation.constraints.NotEmpty;
+
 import java.sql.Timestamp;
 
 public class Usuario {
     private int id;
+
+    @NotEmpty
     private String username;
+
+    @NotEmpty
     private String email;
+
+    @NotEmpty
     private String password;
     private Boolean active;
     private Timestamp fechaCreacion;
