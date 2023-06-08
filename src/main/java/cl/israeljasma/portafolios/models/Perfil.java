@@ -3,7 +3,7 @@ package cl.israeljasma.portafolios.models;
 import java.sql.Timestamp;
 
 public class Perfil {
-    private int id;
+    private Integer id;
     private String nombres;
     private String apellidoPaterno;
     private String apellidoMaterno;

@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotEmpty;
 import java.sql.Timestamp;
 
 public class Usuario {
-    private int id;
+    private Integer id;
 
     @NotEmpty
     private String username;

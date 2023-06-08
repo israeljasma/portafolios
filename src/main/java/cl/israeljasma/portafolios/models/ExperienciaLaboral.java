@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExperienciaLaboral {
-    private int id;
+    private Integer id;
     private String empresa;
     private String Cargo;
     private Date fechaInicio;

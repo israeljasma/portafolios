@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Educacion {
-    private int id;
+    private Integer id;
     private String institucion;
     private String titulo;
     private Date fechaInicio;

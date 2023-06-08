@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Logro {
-    private int id;
+    private Integer id;
     private String descripcion;
     private Date fecha;
     private String categoria;

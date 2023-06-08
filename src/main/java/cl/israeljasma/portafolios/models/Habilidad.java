@@ -3,7 +3,7 @@ package cl.israeljasma.portafolios.models;
 import java.sql.Timestamp;
 
 public class Habilidad {
-    private int id;
+    private Integer id;
     private String nombre;
     private int nivel;
     private String descripcion;

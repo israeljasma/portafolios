@@ -3,7 +3,7 @@ package cl.israeljasma.portafolios.models;
 import java.sql.Timestamp;
 
 public class Interes {
-    private int id;
+    private Integer id;
     private String descripcion;
     private String categoria;
     private String nivel;

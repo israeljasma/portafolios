@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Proyecto {
-    private int id;
+    private Integer id;
     private String nombre;
     private String descripcion;
     private String rol;

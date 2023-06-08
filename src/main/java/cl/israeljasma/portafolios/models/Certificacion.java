@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Certificacion {
-    private int id;
+    private Integer id;
     private String institucionEmisora;
     private Date fechaObetencion;
     private String descripcion;
