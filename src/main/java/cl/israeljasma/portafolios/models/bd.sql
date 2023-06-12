@@ -17,8 +17,8 @@ CREATE TABLE usuario (
     email VARCHAR(100) UNIQUE,
     password VARCHAR(100),
     active BOOLEAN,
-    fechaCreacion TIMESTAMP,
-    fechaModificacion TIMESTAMP
+    fecha_creacion TIMESTAMP,
+    fecha_modificacion TIMESTAMP
 );
 
 -- Tabla de perfil
@@ -169,8 +169,8 @@ INSERT INTO role (nombre, fechaCreacion, fechaModificacion)
 VALUES ('Cliente', '2023-05-21 10:00:00', '2023-05-21 10:30:00');
 
 -- Datos Tabla de usuario
-INSERT INTO usuario (username, email, password, active, fechaCreacion, fechaModificacion)
+INSERT INTO usuario (username, email, password, active, fecha_creacion, fecha_modificacion)
 VALUES ('doravan', 'doravan@example.com', '1234', true, '2023-05-21 10:00:00', '2023-05-21 10:30:00');
 
-INSERT INTO usuario (username, email, password, active, fechaCreacion, fechaModificacion)
+INSERT INTO usuario (username, email, password, active, fecha_creacion, fecha_modificacion)
 VALUES ('pepito', 'pepito@example.com', '4321', true, '2023-05-21 10:00:00', '2023-05-21 10:30:00');
