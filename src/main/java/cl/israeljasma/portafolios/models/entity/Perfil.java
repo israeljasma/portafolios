@@ -1,8 +1,14 @@
-package cl.israeljasma.portafolios.models;
+package cl.israeljasma.portafolios.models.entity;
 
-import java.sql.Timestamp;
+import jakarta.persistence.*;
 
+import java.time.Instant;
+
+@Entity
+@Table(name = "profiles")
 public class Perfil {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombres;
     private String apellidoPaterno;
@@ -15,14 +21,19 @@ public class Perfil {
     private String ciudad;
     private String pais;
     private String telefono;
-    private Timestamp fechaCreacion;
-    private Timestamp fechaModificacion;
-    private int idUsuario;
+
+    @Column(name = "fechaCreacion")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Instant fechaCreacion;
+
+    @Column(name = "fechaModificacion")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Instant fechaModificacion;
 
     public Perfil() {
     }
 
-    public Perfil(String nombres, String apellidoPaterno, String apellidoMaterno, String rut, String emailContacto, String fechaNacimiento, String genero, String direccion, String ciudad, String pais, String telefono, Timestamp fechaCreacion, Timestamp fechaModificacion, int idUsuario) {
+    public Perfil(String nombres, String apellidoPaterno, String apellidoMaterno, String rut, String emailContacto, String fechaNacimiento, String genero, String direccion, String ciudad, String pais, String telefono, Instant fechaCreacion, Instant fechaModificacion) {
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
@@ -36,10 +47,9 @@ public class Perfil {
         this.telefono = telefono;
         this.fechaCreacion = fechaCreacion;
         this.fechaModificacion = fechaModificacion;
-        this.idUsuario = idUsuario;
     }
 
-    public Perfil(int id, String nombres, String apellidoPaterno, String apellidoMaterno, String rut, String emailContacto, String fechaNacimiento, String genero, String direccion, String ciudad, String pais, String telefono, Timestamp fechaCreacion, Timestamp fechaModificacion, int idUsuario) {
+    public Perfil(int id, String nombres, String apellidoPaterno, String apellidoMaterno, String rut, String emailContacto, String fechaNacimiento, String genero, String direccion, String ciudad, String pais, String telefono, Instant fechaCreacion, Instant fechaModificacion) {
         this.id = id;
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;
@@ -54,7 +64,12 @@ public class Perfil {
         this.telefono = telefono;
         this.fechaCreacion = fechaCreacion;
         this.fechaModificacion = fechaModificacion;
-        this.idUsuario = idUsuario;
+    }
+
+    @PrePersist
+    public void prePersist(){
+        fechaCreacion = Instant.now();
+        fechaModificacion = Instant.now();
     }
 
     public int getId() {
@@ -153,27 +168,19 @@ public class Perfil {
         this.telefono = telefono;
     }
 
-    public Timestamp getFechaCreacion() {
+    public Instant getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(Timestamp fechaCreacion) {
+    public void setFechaCreacion(Instant fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Timestamp getFechaModificacion() {
+    public Instant getFechaModificacion() {
         return fechaModificacion;
     }
 
-    public void setFechaModificacion(Timestamp fechaModificacion) {
+    public void setFechaModificacion(Instant fechaModificacion) {
         this.fechaModificacion = fechaModificacion;
-    }
-
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
     }
 }

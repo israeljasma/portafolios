@@ -44,7 +44,9 @@ public class Usuario implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
     private List<Authority> authorities;
 
-    //private Perfil perfil;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
+    private Perfil perfil;
 
     @PrePersist
     public void prePersist(){
@@ -130,11 +132,11 @@ public class Usuario implements Serializable {
         this.authorities = authorities;
     }
 
-    // public Perfil getPerfil() {
-     //   return perfil;
-   // }
+    public Perfil getPerfil() {
+        return perfil;
+    }
 
-    //public void setPerfil(Perfil perfil) {
-      //  this.perfil = perfil;
-   // }
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
 }
