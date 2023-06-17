@@ -10,6 +10,24 @@ CREATE TABLE role (
     fechaModificacion TIMESTAMP
 );
 
+-- Tabla de perfil
+CREATE TABLE profiles (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombres VARCHAR(50),
+    apellido_paterno VARCHAR(50),
+    apellido_materno VARCHAR(50),
+    rut VARCHAR(12) UNIQUE,
+    email_contacto VARCHAR(100),
+    fecha_nacimiento DATE,
+    genero VARCHAR(20),
+    direccion VARCHAR(100),
+    ciudad VARCHAR(50),
+    pais VARCHAR(50),
+    telefono VARCHAR(20),
+    fecha_creacion TIMESTAMP,
+    fecha_modificacion TIMESTAMP
+);
+
 -- Tabla de usuario
 CREATE TABLE usuario (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -18,7 +36,9 @@ CREATE TABLE usuario (
     password VARCHAR(100),
     active BOOLEAN,
     fecha_creacion TIMESTAMP,
-    fecha_modificacion TIMESTAMP
+    fecha_modificacion TIMESTAMP,
+    profile_id INT,
+    FOREIGN KEY (profile_id) REFERENCES profiles(id)
 );
 
 -- Tabla de authorities
@@ -33,26 +53,6 @@ CREATE TABLE user_authority (
     authority_id INT,
     FOREIGN KEY (user_id) REFERENCES usuario(id),
     FOREIGN KEY (authority_id) REFERENCES authorities(id)
-);
-
--- Tabla de perfil
-CREATE TABLE perfil (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nombres VARCHAR(50),
-    apellidoPaterno VARCHAR(50),
-    apellidoMaterno VARCHAR(50),
-    rut VARCHAR(12) UNIQUE,
-    emailContacto VARCHAR(100),
-    fechaNacimiento DATE,
-    genero VARCHAR(20),
-    direccion VARCHAR(100),
-    ciudad VARCHAR(50),
-    pais VARCHAR(50),
-    telefono VARCHAR(20),
-    fechaCreacion TIMESTAMP,
-    fechaModificacion TIMESTAMP,
-    idUsuario INT,
-    FOREIGN KEY (idUsuario) REFERENCES usuario(id)
 );
 
 -- Tabla de usuarios roles
@@ -77,7 +77,7 @@ CREATE TABLE experienciaLaboral (
     fechaCreacion TIMESTAMP,
     fechaModificacion TIMESTAMP,
     idPerfil INT,
-    FOREIGN KEY (idPerfil) REFERENCES perfil(id)
+    FOREIGN KEY (idPerfil) REFERENCES profiles(id)
 );
 
 -- Tabla de educacion
@@ -92,7 +92,7 @@ CREATE TABLE educacion (
     fechaCreacion TIMESTAMP,
     fechaModificacion TIMESTAMP,
     idPerfil INT,
-    FOREIGN KEY (idPerfil) REFERENCES perfil(id)
+    FOREIGN KEY (idPerfil) REFERENCES profiles(id)
 );
 
 -- Tabla de habilidad
@@ -105,7 +105,7 @@ CREATE TABLE habilidad (
     fechaCreacion TIMESTAMP,
     fechaModificacion TIMESTAMP,
     idPerfil INT,
-    FOREIGN KEY (idPerfil) REFERENCES perfil(id)
+    FOREIGN KEY (idPerfil) REFERENCES profiles(id)
 );
 
 -- Tabla de proyectos
@@ -119,7 +119,7 @@ CREATE TABLE proyectos (
     fechaCreacion TIMESTAMP,
     fechaModificacion TIMESTAMP,
     idPerfil INT,
-    FOREIGN KEY (idPerfil) REFERENCES perfil(id)
+    FOREIGN KEY (idPerfil) REFERENCES profiles(id)
 );
 
 -- Tabla de certificacion
@@ -133,7 +133,7 @@ CREATE TABLE certificacion (
     fechaCreacion TIMESTAMP,
     fechaModificacion TIMESTAMP,
     idPerfil INT,
-    FOREIGN KEY (idPerfil) REFERENCES perfil(id)
+    FOREIGN KEY (idPerfil) REFERENCES profiles(id)
 );
 
 -- Tabla de referencias
@@ -161,7 +161,7 @@ CREATE TABLE logros (
     fechaCreacion TIMESTAMP,
     fechaModificacion TIMESTAMP,
     idPerfil INT,
-    FOREIGN KEY (idPerfil) REFERENCES perfil(id)
+    FOREIGN KEY (idPerfil) REFERENCES profiles(id)
 );
 
 -- Tabla de intereses
@@ -173,7 +173,7 @@ CREATE TABLE intereses (
     fechaCreacion TIMESTAMP,
     fechaModificacion TIMESTAMP,
     idPerfil INT,
-    FOREIGN KEY (idPerfil) REFERENCES perfil(id)
+    FOREIGN KEY (idPerfil) REFERENCES profiles(id)
 );
 
 -- Datos Tabla de role
@@ -182,12 +182,25 @@ VALUES ('Administrador', '2023-05-21 10:00:00', '2023-05-21 10:30:00');
 INSERT INTO role (nombre, fechaCreacion, fechaModificacion)
 VALUES ('Cliente', '2023-05-21 10:00:00', '2023-05-21 10:30:00');
 
--- Datos Tabla de usuario
-INSERT INTO usuario (username, email, password, active, fecha_creacion, fecha_modificacion)
-VALUES ('doravan', 'doravan@example.com', '1234', true, '2023-05-21 10:00:00', '2023-05-21 10:30:00');
+-- Datos Tabla de profiles
+INSERT INTO profiles (fecha_creacion, fecha_modificacion)
+VALUES ('2023-05-21 10:00:00', '2023-05-21 10:30:00');
 
-INSERT INTO usuario (username, email, password, active, fecha_creacion, fecha_modificacion)
-VALUES ('pepito', 'pepito@example.com', '4321', true, '2023-05-21 10:00:00', '2023-05-21 10:30:00');
+INSERT INTO profiles (fecha_creacion, fecha_modificacion)
+VALUES ('2023-05-21 10:00:00', '2023-05-21 10:30:00');
+
+INSERT INTO profiles (fecha_creacion, fecha_modificacion)
+VALUES ('2023-05-21 10:00:00', '2023-05-21 10:30:00');
+
+-- Datos Tabla de usuario
+INSERT INTO usuario (username, email, password, active, fecha_creacion, fecha_modificacion, profile_id)
+VALUES ('doravan', 'doravan@example.com', '1234', true, '2023-05-21 10:00:00', '2023-05-21 10:30:00', 1);
+
+INSERT INTO usuario (username, email, password, active, fecha_creacion, fecha_modificacion, profile_id)
+VALUES ('pepito', 'pepito@example.com', '4321', true, '2023-05-21 10:00:00', '2023-05-21 10:30:00', 2);
+
+INSERT INTO usuario (username, email, password, active, fecha_creacion, fecha_modificacion, profile_id)
+VALUES ('mario', 'mario@example.com', '1234', true, '2023-05-21 10:00:00', '2023-05-21 10:30:00', 3);
 
 -- Datos Tabla de authorities
 INSERT INTO authorities (name) VALUES ('ADMIN');
