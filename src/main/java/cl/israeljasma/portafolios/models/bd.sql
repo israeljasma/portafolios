@@ -21,6 +21,20 @@ CREATE TABLE usuario (
     fecha_modificacion TIMESTAMP
 );
 
+-- Tabla de authorities
+CREATE TABLE authorities (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50)
+);
+
+CREATE TABLE user_authority (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    authority_id INT,
+    FOREIGN KEY (user_id) REFERENCES usuario(id),
+    FOREIGN KEY (authority_id) REFERENCES authorities(id)
+);
+
 -- Tabla de perfil
 CREATE TABLE perfil (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -174,3 +188,13 @@ VALUES ('doravan', 'doravan@example.com', '1234', true, '2023-05-21 10:00:00', '
 
 INSERT INTO usuario (username, email, password, active, fecha_creacion, fecha_modificacion)
 VALUES ('pepito', 'pepito@example.com', '4321', true, '2023-05-21 10:00:00', '2023-05-21 10:30:00');
+
+-- Datos Tabla de authorities
+INSERT INTO authorities (name) VALUES ('ADMIN');
+INSERT INTO authorities (name) VALUES ('WRITE');
+INSERT INTO authorities (name) VALUES ('READ');
+
+-- Datos Tabla de user_authority
+INSERT INTO user_authority (user_id, authority_id) VALUES (1,1);
+INSERT INTO user_authority (user_id, authority_id) VALUES (2,2);
+INSERT INTO user_authority (user_id, authority_id) VALUES (3,3);
