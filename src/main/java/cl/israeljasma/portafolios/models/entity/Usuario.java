@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotEmpty;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.List;
 
 @Entity
 @Table(name = "usuario")
@@ -37,6 +38,12 @@ public class Usuario implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Instant fechaModificacion;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_authority",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
+    private List<Authority> authorities;
+
     //private Perfil perfil;
 
     @PrePersist
@@ -44,6 +51,19 @@ public class Usuario implements Serializable {
         active = true;
         fechaCreacion = Instant.now();
         fechaModificacion = Instant.now();
+    }
+
+    public Usuario() {
+    }
+
+    public Usuario(String username, String email, String password, Boolean active, Instant fechaCreacion, Instant fechaModificacion, List<Authority> authorities) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.active = active;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaModificacion = fechaModificacion;
+        this.authorities = authorities;
     }
 
     public Long getId() {
@@ -102,7 +122,15 @@ public class Usuario implements Serializable {
         this.fechaModificacion = fechaModificacion;
     }
 
-   // public Perfil getPerfil() {
+    public List<Authority> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(List<Authority> authorities) {
+        this.authorities = authorities;
+    }
+
+    // public Perfil getPerfil() {
      //   return perfil;
    // }
 
