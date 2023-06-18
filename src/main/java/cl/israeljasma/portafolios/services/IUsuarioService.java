@@ -1,4 +1,4 @@
-package cl.israeljasma.portafolios.models.services;
+package cl.israeljasma.portafolios.services;
 
 import cl.israeljasma.portafolios.models.entity.Usuario;
 
