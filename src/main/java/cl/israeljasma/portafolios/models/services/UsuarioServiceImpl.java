@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioServiceImpl implements IUsuarioService{
@@ -36,5 +37,10 @@ public class UsuarioServiceImpl implements IUsuarioService{
     @Override
     public void delete(Long id) {
         usuarioDao.deleteById(id);
+    }
+
+    @Override
+    public Optional<Usuario> findByUsername(String username) {
+        return usuarioDao.findByUsername(username);
     }
 }
