@@ -1,7 +1,7 @@
 package cl.israeljasma.portafolios.controllers;
 
 import cl.israeljasma.portafolios.models.entity.Usuario;
-import cl.israeljasma.portafolios.models.services.IUsuarioService;
+import cl.israeljasma.portafolios.services.IUsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

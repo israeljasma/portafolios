@@ -1,7 +1,7 @@
 package cl.israeljasma.portafolios.controllersrest;
 
 import cl.israeljasma.portafolios.models.entity.Usuario;
-import cl.israeljasma.portafolios.models.services.IUsuarioService;
+import cl.israeljasma.portafolios.services.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
