@@ -9,7 +9,7 @@ import java.time.Instant;
 public class Perfil {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String nombres;
     private String apellidoPaterno;
     private String apellidoMaterno;
@@ -49,7 +49,7 @@ public class Perfil {
         this.fechaModificacion = fechaModificacion;
     }
 
-    public Perfil(int id, String nombres, String apellidoPaterno, String apellidoMaterno, String rut, String emailContacto, String fechaNacimiento, String genero, String direccion, String ciudad, String pais, String telefono, Instant fechaCreacion, Instant fechaModificacion) {
+    public Perfil(Long id, String nombres, String apellidoPaterno, String apellidoMaterno, String rut, String emailContacto, String fechaNacimiento, String genero, String direccion, String ciudad, String pais, String telefono, Instant fechaCreacion, Instant fechaModificacion) {
         this.id = id;
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;
@@ -72,11 +72,11 @@ public class Perfil {
         fechaModificacion = Instant.now();
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
