@@ -2,6 +2,7 @@ package cl.israeljasma.portafolios.controllers;
 
 import cl.israeljasma.portafolios.models.entity.Usuario;
 import cl.israeljasma.portafolios.services.IUsuarioService;
+import cl.israeljasma.portafolios.utils.GeneralUtils;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import java.util.Map;
 
+import static cl.israeljasma.portafolios.utils.GeneralUtils.getUsernameSession;
+
 @Controller
 @SessionAttributes("usuario")
 public class UsuarioController {
@@ -24,6 +27,7 @@ public class UsuarioController {
     @RequestMapping(value = "/dashboard/listar", method = RequestMethod.GET)
     public String listar(Model model){
         model.addAttribute("titulo", "Listado de usuarios");
+        model.addAttribute("usernameSession", getUsernameSession());
         model.addAttribute("usuarios", usuarioService.findAll());
         return "/usuarios/listar";
     }
@@ -34,6 +38,7 @@ public class UsuarioController {
         Usuario usuario = new Usuario();
         model.put("usuario", usuario);
         model.put("titulo", "Formulario de usuario");
+        model.put("usernameSession", getUsernameSession());
         return "/usuarios/form";
     }
 
@@ -46,6 +51,7 @@ public class UsuarioController {
             return "redirect:/usuarios/listar";
         }
         model.put("usuario", usuario);
+        model.put("usernameSession", getUsernameSession());
         model.put("titulo", "Editar cliente");
         return "/usuarios/form";
     }

@@ -18,6 +18,8 @@ import org.springframework.web.bind.support.SessionStatus;
 import java.util.Objects;
 import java.util.Optional;
 
+import static cl.israeljasma.portafolios.utils.GeneralUtils.getUsernameSession;
+
 @SessionAttributes("perfil")
 @Controller
 public class ProfileController {
@@ -46,8 +48,7 @@ public class ProfileController {
         assert Objects.requireNonNull(usuario).isPresent();
 
         model.addAttribute("titulo", "Perfil");
-        model.addAttribute("userSession", usuarioLog.get().getUsername());
-
+        model.addAttribute("usernameSession", getUsernameSession());
         model.addAttribute("perfil", usuario.get().getPerfil());
 
         return "profile/profile";
@@ -66,6 +67,7 @@ public class ProfileController {
 
         Perfil perfil = perfilService.finOne(usuarioService.findByUsername(userDetails.getUsername()).get().getPerfil().getId());
         model.addAttribute("titulo", "Modicar perfil");
+        model.addAttribute("usernameSession", getUsernameSession());
         model.addAttribute("perfil", perfil);
         return "profile/edit";
     }
