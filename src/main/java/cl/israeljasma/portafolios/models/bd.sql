@@ -194,7 +194,7 @@ VALUES ('2023-05-21 10:00:00', '2023-05-21 10:30:00');
 
 -- Datos Tabla de usuario
 INSERT INTO usuario (username, email, password, active, fecha_creacion, fecha_modificacion, profile_id)
-VALUES ('doravan', 'doravan@example.com', '1234', true, '2023-05-21 10:00:00', '2023-05-21 10:30:00', 1);
+VALUES ('testuser', 'testuser@example.com', '1234', true, '2023-05-21 10:00:00', '2023-05-21 10:30:00', 1);
 
 INSERT INTO usuario (username, email, password, active, fecha_creacion, fecha_modificacion, profile_id)
 VALUES ('pepito', 'pepito@example.com', '4321', true, '2023-05-21 10:00:00', '2023-05-21 10:30:00', 2);
