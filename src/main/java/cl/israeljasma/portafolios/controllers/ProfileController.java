@@ -24,11 +24,24 @@ import static cl.israeljasma.portafolios.utils.GeneralUtils.getUsernameSession;
 @Controller
 public class ProfileController {
 
+    /**
+     * Servicio de usuario utilizado para realizar operaciones relacionadas con usuarios.
+     */
     @Autowired
     private IUsuarioService usuarioService;
+
+    /**
+     * Servicio de perfil utilizado para realizar operaciones relacionadas con perfiles.
+     */
     @Autowired
     private IPerfilService perfilService;
 
+    /**
+     * Maneja la solicitud GET para la página de perfil de usuario.
+     *
+     * @param model El modelo utilizado para pasar datos a la vista.
+     * @return La vista "profile/profile" que muestra el perfil de usuario.
+     */
     @RequestMapping(value = {"/dashboard/usuarios/{id}/profile", "/dashboard/profile"}, method = RequestMethod.GET)
     public String profile(Model model){
         Object objSessionUser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -54,6 +67,12 @@ public class ProfileController {
         return "profile/profile";
     }
 
+    /**
+     * Maneja la solicitud GET para editar el perfil.
+     *
+     * @param model El modelo utilizado para almacenar atributos y pasar datos a la vista.
+     * @return La vista para editar el perfil.
+     */
     @RequestMapping(value = {"/dashboard/profile/edit"}, method = RequestMethod.GET)
     public String profileEdit(Model model){
         Object objSessionUser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -65,13 +84,24 @@ public class ProfileController {
 
         assert userDetails != null;
 
+        // Obtiene el perfil del usuario actual utilizando el servicio perfilService y el nombre de usuario
         Perfil perfil = perfilService.finOne(usuarioService.findByUsername(userDetails.getUsername()).get().getPerfil().getId());
+
+        // Agrega atributos al modelo para pasarlos a la vista
         model.addAttribute("titulo", "Modicar perfil");
         model.addAttribute("usernameSession", getUsernameSession());
         model.addAttribute("perfil", perfil);
         return "profile/edit";
     }
 
+    /**
+     * Maneja la solicitud POST para guardar el perfil.
+     *
+     * @param perfil El perfil a guardar.
+     * @param model El modelo utilizado para almacenar atributos y pasar datos a la vista.
+     * @param status El estado de la sesión.
+     * @return La redirección a la página de perfil.
+     */
     @RequestMapping(value = {"/dashboard/profile/edit"}, method = RequestMethod.POST)
     public String profileSave(@Valid Perfil perfil, Model model, SessionStatus status){
 
