@@ -2,11 +2,13 @@ package cl.israeljasma.portafolios.models.entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.Instant;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "profiles")
-public class Perfil {
+public class Perfil implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,7 +17,7 @@ public class Perfil {
     private String apellidoMaterno;
     private String rut;
     private String emailContacto;
-    private String fechaNacimiento;
+    private LocalDate fechaNacimiento;
     private String genero;
     private String direccion;
     private String ciudad;
@@ -33,7 +35,7 @@ public class Perfil {
     public Perfil() {
     }
 
-    public Perfil(String nombres, String apellidoPaterno, String apellidoMaterno, String rut, String emailContacto, String fechaNacimiento, String genero, String direccion, String ciudad, String pais, String telefono, Instant fechaCreacion, Instant fechaModificacion) {
+    public Perfil(String nombres, String apellidoPaterno, String apellidoMaterno, String rut, String emailContacto, LocalDate fechaNacimiento, String genero, String direccion, String ciudad, String pais, String telefono, Instant fechaCreacion, Instant fechaModificacion) {
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
@@ -49,7 +51,7 @@ public class Perfil {
         this.fechaModificacion = fechaModificacion;
     }
 
-    public Perfil(Long id, String nombres, String apellidoPaterno, String apellidoMaterno, String rut, String emailContacto, String fechaNacimiento, String genero, String direccion, String ciudad, String pais, String telefono, Instant fechaCreacion, Instant fechaModificacion) {
+    public Perfil(Long id, String nombres, String apellidoPaterno, String apellidoMaterno, String rut, String emailContacto, LocalDate fechaNacimiento, String genero, String direccion, String ciudad, String pais, String telefono, Instant fechaCreacion, Instant fechaModificacion) {
         this.id = id;
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;
@@ -120,11 +122,11 @@ public class Perfil {
         this.emailContacto = emailContacto;
     }
 
-    public String getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
