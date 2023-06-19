@@ -16,6 +16,11 @@ public class UsuarioRestController {
     @Autowired
     private IUsuarioService usuarioService;
 
+    /**
+     * Devuelve una lista de todos los usuarios.
+     *
+     * @return Una lista de objetos Usuario que representa a todos los usuarios.
+     */
     @GetMapping("users")
     public List<Usuario> allUSers(){
         return usuarioService.findAll();
