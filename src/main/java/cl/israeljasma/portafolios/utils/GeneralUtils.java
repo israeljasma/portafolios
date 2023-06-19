@@ -20,7 +20,6 @@ public class GeneralUtils {
      */
     public static String getUsernameSession(){
         UserDetails userDetails = null;
-        Optional<Usuario> usuarioLog;
         Object objSessionUser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (objSessionUser instanceof UserDetails) {
