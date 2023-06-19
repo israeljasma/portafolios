@@ -24,6 +24,13 @@ public class UsuarioController {
 
     @Autowired
     private IUsuarioService usuarioService;
+
+    /**
+     * Método para listar usuarios en el dashboard.
+     *
+     * @param model El objeto Model para agregar los atributos necesarios.
+     * @return La vista "/usuarios/listar" que muestra el listado de usuarios.
+     */
     @RequestMapping(value = "/dashboard/listar", method = RequestMethod.GET)
     public String listar(Model model){
         model.addAttribute("titulo", "Listado de usuarios");
@@ -32,6 +39,12 @@ public class UsuarioController {
         return "/usuarios/listar";
     }
 
+    /**
+     * Método para mostrar el formulario de creación de usuarios en el dashboard.
+     *
+     * @param model El objeto Map para agregar los atributos necesarios.
+     * @return La vista "/usuarios/form" que muestra el formulario de usuario.
+     */
     @RequestMapping(value = "/dashboard/form")
     public String crear(Map<String, Object> model){
 
@@ -42,6 +55,13 @@ public class UsuarioController {
         return "/usuarios/form";
     }
 
+    /**
+     * Método para mostrar el formulario de edición de un usuario en el dashboard.
+     *
+     * @param id    El ID del usuario a editar.
+     * @param model El objeto Map para agregar los atributos necesarios.
+     * @return La vista "/usuarios/form" que muestra el formulario de usuario.
+     */
     @RequestMapping(value = "/dashboard/form/{id}")
     public String editar(@PathVariable(value = "id") Long id, Map<String, Object> model){
         Usuario usuario = null;
@@ -56,6 +76,15 @@ public class UsuarioController {
         return "/usuarios/form";
     }
 
+    /**
+     * Método para guardar un usuario en el formulario de creación o edición.
+     *
+     * @param usuario El objeto Usuario a guardar.
+     * @param result  El objeto BindingResult para validar los errores de validación.
+     * @param model   El objeto Model para agregar los atributos necesarios.
+     * @param status  El objeto SessionStatus para indicar que la sesión está completa.
+     * @return Una redirección a la vista "/dashboard/listar" después de guardar el usuario.
+     */
     @RequestMapping(value = "/dashboard/form", method = RequestMethod.POST)
     public String guardar(@Valid Usuario usuario, BindingResult result, Model model, SessionStatus status){
 
@@ -69,6 +98,12 @@ public class UsuarioController {
         return "redirect:/dashboard/listar";
     }
 
+    /**
+     * Método para eliminar un usuario en el dashboard.
+     *
+     * @param id El ID del usuario a eliminar.
+     * @return Una redirección a la vista "/dashboard/listar" después de eliminar el usuario.
+     */
     @RequestMapping(value = "/dashboard/eliminar/{id}")
     public String eliminar(@PathVariable(value = "id") Long id){
         if (id>0){
