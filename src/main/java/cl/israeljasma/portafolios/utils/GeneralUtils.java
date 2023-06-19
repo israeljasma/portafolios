@@ -13,6 +13,11 @@ public class GeneralUtils {
     @Autowired
     private static IUsuarioService usuarioService;
 
+    /**
+     * Devuelve el nombre de usuario asociado a la sesión actual.
+     *
+     * @return El nombre de usuario de la sesión actual.
+     */
     public static String getUsernameSession(){
         UserDetails userDetails = null;
         Optional<Usuario> usuarioLog;
