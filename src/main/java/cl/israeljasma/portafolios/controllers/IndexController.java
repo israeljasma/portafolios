@@ -5,6 +5,8 @@ package cl.israeljasma.portafolios.controllers;
 // import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.beans.factory.annotation.Qualifier;
 // import org.springframework.beans.factory.annotation.Value;
+import cl.israeljasma.portafolios.services.IPerfilService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,9 +39,13 @@ public class IndexController {
     //     this.servicio = servicio;
     // }
 
+    @Autowired
+    IPerfilService perfilService;
+
     @GetMapping({"/", "", "/index"})
     public String index(Model model){
         model.addAttribute("titulo", "Portafolios");
+        model.addAttribute("perfil", perfilService.finOne(1L));
         // model.addAttribute("objeto", servicio.operacion());
         return "index";
     }
