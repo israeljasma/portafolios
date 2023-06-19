@@ -42,6 +42,12 @@ public class IndexController {
     @Autowired
     IPerfilService perfilService;
 
+    /**
+     * Controlador que maneja la solicitud GET para la página de inicio ("/", "", "/index").
+     *
+     * @param model El objeto Model utilizado para pasar atributos a la vista.
+     * @return El nombre de la vista a mostrar, en este caso, "index".
+     */
     @GetMapping({"/", "", "/index"})
     public String index(Model model){
         model.addAttribute("titulo", "Portafolios");
