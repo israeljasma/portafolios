@@ -1,5 +1,6 @@
 package cl.israeljasma.portafolios.controllers;
 
+import cl.israeljasma.portafolios.logs.CreateLog;
 import cl.israeljasma.portafolios.models.entity.Usuario;
 import cl.israeljasma.portafolios.services.IUsuarioService;
 import cl.israeljasma.portafolios.utils.GeneralUtils;
@@ -93,8 +94,16 @@ public class UsuarioController {
             model.addAttribute("titulo", "Formulario de usuario");
             return "/usuarios/form";
         }
-        usuarioService.save(usuario);
-        status.setComplete();
+
+        try{
+            usuarioService.save(usuario);
+            status.setComplete();
+        }catch (Exception e){
+            CreateLog.errorLog("Error createUser: " +e.getMessage());
+        }
+
+        //usuarioService.save(usuario);
+        //status.setComplete();
         return "redirect:/dashboard/listar";
     }
 
