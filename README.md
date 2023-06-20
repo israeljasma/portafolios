@@ -20,7 +20,7 @@ Siga estos pasos para configurar y ejecutar el proyecto:
 2. Inicia los módulos de Apache y MySQL haciendo clic en los botones "Start" junto a cada uno situados en el panel de control de XAMPP
 3. Abre tu navegador web y ve a "localhost/phpmyadmin".
 4. Dirigete a la seccion de ejecucion de sentencias SQL.
-5. Copia y pega las sentencias SQL en el archibo BD.sql que estan situadas en el directorio
+5. Copia y pega las sentencias SQL en el archivo BD.sql que estan situadas en el directorio
 > portafolios/src/main/java/cl/israeljasma/portafolios/models
 6. Ejecuta las sentencias para que se genere la base de datos con sus datos de prueba
 7. Navegar al directorio del proyecto:
