@@ -1,24 +1,33 @@
-package cl.israeljasma.portafolios.models;
+package cl.israeljasma.portafolios.models.entity;
 
-import java.sql.Date;
-import java.sql.Timestamp;
+import jakarta.persistence.*;
 
+import java.time.Instant;
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "educations")
 public class Educacion {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String institucion;
     private String titulo;
-    private Date fechaInicio;
-    private Date fechaTermino;
+    private LocalDate fechaInicio;
+    private LocalDate fechaTermino;
     private String descripcion;
     private String pais;
-    private Timestamp fechaCreacion;
-    private Timestamp fechaModificacion;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Instant fechaCreacion;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Instant fechaModificacion;
     private int idPerfil;
 
     public Educacion() {
     }
 
-    public Educacion(String institucion, String titulo, Date fechaInicio, Date fechaTermino, String descripcion, String pais, Timestamp fechaCreacion, Timestamp fechaModificacion, int idPerfil) {
+    public Educacion(String institucion, String titulo, LocalDate fechaInicio, LocalDate fechaTermino, String descripcion, String pais, Instant fechaCreacion, Instant fechaModificacion, int idPerfil) {
         this.institucion = institucion;
         this.titulo = titulo;
         this.fechaInicio = fechaInicio;
@@ -30,7 +39,7 @@ public class Educacion {
         this.idPerfil = idPerfil;
     }
 
-    public Educacion(int id, String institucion, String titulo, Date fechaInicio, Date fechaTermino, String descripcion, String pais, Timestamp fechaCreacion, Timestamp fechaModificacion, int idPerfil) {
+    public Educacion(int id, String institucion, String titulo, LocalDate fechaInicio, LocalDate fechaTermino, String descripcion, String pais, Instant fechaCreacion, Instant fechaModificacion, int idPerfil) {
         this.id = id;
         this.institucion = institucion;
         this.titulo = titulo;
@@ -67,19 +76,19 @@ public class Educacion {
         this.titulo = titulo;
     }
 
-    public Date getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public Date getFechaTermino() {
+    public LocalDate getFechaTermino() {
         return fechaTermino;
     }
 
-    public void setFechaTermino(Date fechaTermino) {
+    public void setFechaTermino(LocalDate fechaTermino) {
         this.fechaTermino = fechaTermino;
     }
 
@@ -99,19 +108,19 @@ public class Educacion {
         this.pais = pais;
     }
 
-    public Timestamp getFechaCreacion() {
+    public Instant getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(Timestamp fechaCreacion) {
+    public void setFechaCreacion(Instant fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Timestamp getFechaModificacion() {
+    public Instant getFechaModificacion() {
         return fechaModificacion;
     }
 
-    public void setFechaModificacion(Timestamp fechaModificacion) {
+    public void setFechaModificacion(Instant fechaModificacion) {
         this.fechaModificacion = fechaModificacion;
     }
 

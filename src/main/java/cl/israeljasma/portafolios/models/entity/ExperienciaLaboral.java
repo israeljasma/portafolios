@@ -1,29 +1,39 @@
-package cl.israeljasma.portafolios.models;
+package cl.israeljasma.portafolios.models.entity;
 
-import java.sql.Date;
-import java.sql.Timestamp;
+import cl.israeljasma.portafolios.models.Referencia;
+import jakarta.persistence.*;
+
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "work_experiences")
 public class ExperienciaLaboral {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String empresa;
-    private String Cargo;
-    private Date fechaInicio;
-    private Date fechaTermino;
+    private String cargo;
+    private LocalDate fechaInicio;
+    private LocalDate fechaTermino;
     private String descripcion;
     private String referenciaContacto;
-    private Timestamp fechaCreacion;
-    private Timestamp fechaModificacion;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Instant fechaCreacion;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Instant fechaModificacion;
     private int idPerfil;
-    private List<Referencia> referencias;
+    //private List<Referencia> referencias;
 
     public ExperienciaLaboral() {
     }
 
-    public ExperienciaLaboral(String empresa, String cargo, Date fechaInicio, Date fechaTermino, String descripcion, String referenciaContacto, Timestamp fechaCreacion, Timestamp fechaModificacion, int idPerfil) {
+    public ExperienciaLaboral(String empresa, String cargo, LocalDate fechaInicio, LocalDate fechaTermino, String descripcion, String referenciaContacto, Instant fechaCreacion, Instant fechaModificacion, int idPerfil) {
         this.empresa = empresa;
-        Cargo = cargo;
+        this.cargo = cargo;
         this.fechaInicio = fechaInicio;
         this.fechaTermino = fechaTermino;
         this.descripcion = descripcion;
@@ -31,13 +41,13 @@ public class ExperienciaLaboral {
         this.fechaCreacion = fechaCreacion;
         this.fechaModificacion = fechaModificacion;
         this.idPerfil = idPerfil;
-        this.referencias = new ArrayList<>();
+        //this.referencias = new ArrayList<>();
     }
 
-    public ExperienciaLaboral(int id, String empresa, String cargo, Date fechaInicio, Date fechaTermino, String descripcion, String referenciaContacto, Timestamp fechaCreacion, Timestamp fechaModificacion, int idPerfil) {
+    public ExperienciaLaboral(int id, String empresa, String cargo, LocalDate fechaInicio, LocalDate fechaTermino, String descripcion, String referenciaContacto, Instant fechaCreacion, Instant fechaModificacion, int idPerfil) {
         this.id = id;
         this.empresa = empresa;
-        Cargo = cargo;
+        this.cargo = cargo;
         this.fechaInicio = fechaInicio;
         this.fechaTermino = fechaTermino;
         this.descripcion = descripcion;
@@ -45,7 +55,7 @@ public class ExperienciaLaboral {
         this.fechaCreacion = fechaCreacion;
         this.fechaModificacion = fechaModificacion;
         this.idPerfil = idPerfil;
-        this.referencias = new ArrayList<>();
+        //this.referencias = new ArrayList<>();
     }
 
     public int getId() {
@@ -65,26 +75,26 @@ public class ExperienciaLaboral {
     }
 
     public String getCargo() {
-        return Cargo;
+        return cargo;
     }
 
     public void setCargo(String cargo) {
-        Cargo = cargo;
+        cargo = cargo;
     }
 
-    public Date getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public Date getFechaTermino() {
+    public LocalDate getFechaTermino() {
         return fechaTermino;
     }
 
-    public void setFechaTermino(Date fechaTermino) {
+    public void setFechaTermino(LocalDate fechaTermino) {
         this.fechaTermino = fechaTermino;
     }
 
@@ -104,19 +114,19 @@ public class ExperienciaLaboral {
         this.referenciaContacto = referenciaContacto;
     }
 
-    public Timestamp getFechaCreacion() {
+    public Instant getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(Timestamp fechaCreacion) {
+    public void setFechaCreacion(Instant fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Timestamp getFechaModificacion() {
+    public Instant getFechaModificacion() {
         return fechaModificacion;
     }
 
-    public void setFechaModificacion(Timestamp fechaModificacion) {
+    public void setFechaModificacion(Instant fechaModificacion) {
         this.fechaModificacion = fechaModificacion;
     }
 
