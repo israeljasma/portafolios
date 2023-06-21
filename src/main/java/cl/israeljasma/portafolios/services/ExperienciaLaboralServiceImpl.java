@@ -12,7 +12,7 @@ import java.util.List;
 public class ExperienciaLaboralServiceImpl implements IExperienciaLaboralService {
 
     @Autowired
-    IExperienciaLaboralDao experienciaLaboralDao;
+    private IExperienciaLaboralDao experienciaLaboralDao;
 
     @Transactional(readOnly = true)
     @Override
