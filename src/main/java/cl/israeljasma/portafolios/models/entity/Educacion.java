@@ -11,7 +11,7 @@ public class Educacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String institucion;
     private String titulo;
     private LocalDate fechaInicio;
@@ -39,7 +39,7 @@ public class Educacion {
         this.idPerfil = idPerfil;
     }
 
-    public Educacion(int id, String institucion, String titulo, LocalDate fechaInicio, LocalDate fechaTermino, String descripcion, String pais, Instant fechaCreacion, Instant fechaModificacion, int idPerfil) {
+    public Educacion(Long id, String institucion, String titulo, LocalDate fechaInicio, LocalDate fechaTermino, String descripcion, String pais, Instant fechaCreacion, Instant fechaModificacion, int idPerfil) {
         this.id = id;
         this.institucion = institucion;
         this.titulo = titulo;
@@ -52,11 +52,11 @@ public class Educacion {
         this.idPerfil = idPerfil;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

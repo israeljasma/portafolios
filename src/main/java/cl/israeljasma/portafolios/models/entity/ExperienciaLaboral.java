@@ -14,7 +14,7 @@ public class ExperienciaLaboral {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String empresa;
     private String cargo;
     private LocalDate fechaInicio;
@@ -44,7 +44,7 @@ public class ExperienciaLaboral {
         //this.referencias = new ArrayList<>();
     }
 
-    public ExperienciaLaboral(int id, String empresa, String cargo, LocalDate fechaInicio, LocalDate fechaTermino, String descripcion, String referenciaContacto, Instant fechaCreacion, Instant fechaModificacion, int idPerfil) {
+    public ExperienciaLaboral(Long id, String empresa, String cargo, LocalDate fechaInicio, LocalDate fechaTermino, String descripcion, String referenciaContacto, Instant fechaCreacion, Instant fechaModificacion, int idPerfil) {
         this.id = id;
         this.empresa = empresa;
         this.cargo = cargo;
@@ -58,11 +58,11 @@ public class ExperienciaLaboral {
         //this.referencias = new ArrayList<>();
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
