@@ -3,10 +3,12 @@ package cl.israeljasma.portafolios.services;
 import cl.israeljasma.portafolios.models.dao.IExperienciaLaboralDao;
 import cl.israeljasma.portafolios.models.entity.ExperienciaLaboral;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
 public class ExperienciaLaboralServiceImpl implements IExperienciaLaboralService {
 
     @Autowired
