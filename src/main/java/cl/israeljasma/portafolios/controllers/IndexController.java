@@ -52,7 +52,6 @@ public class IndexController {
     public String index(Model model){
         model.addAttribute("titulo", "Portafolios");
         model.addAttribute("perfil", perfilService.finOne(1L));
-        // model.addAttribute("objeto", servicio.operacion());
         return "index";
     }
 
