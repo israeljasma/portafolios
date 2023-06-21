@@ -66,33 +66,33 @@ CREATE TABLE usuarios_roles (
 );
 
 -- Tabla de experiencia laboral
-CREATE TABLE experienciaLaboral (
+CREATE TABLE work_experiences (
     id INT PRIMARY KEY AUTO_INCREMENT,
     empresa VARCHAR(50),
     cargo TEXT(100) UNIQUE,
-    fechaInicio DATE,
-    fechaTermino DATE,
+    fecha_inicio DATE,
+    fecha_termino DATE,
     descripcion TEXT,
-    referenciaContacto TEXT,
-    fechaCreacion TIMESTAMP,
-    fechaModificacion TIMESTAMP,
-    idPerfil INT,
-    FOREIGN KEY (idPerfil) REFERENCES profiles(id)
+    referencia_tontacto TEXT,
+    fecha_creacion TIMESTAMP,
+    fecha_modificacion TIMESTAMP,
+    profile_id INT,
+    FOREIGN KEY (profile_id) REFERENCES profiles(id)
 );
 
 -- Tabla de educacion
-CREATE TABLE educacion (
+CREATE TABLE educations (
     id INT PRIMARY KEY AUTO_INCREMENT,
     institucion VARCHAR(50),
     titulo VARCHAR(50),
-    fechaInicio DATE,
-    fechaTermino DATE,
+    fecha_inicio DATE,
+    fecha_termino DATE,
     descripcion TEXT,
     pais VARCHAR(50),
-    fechaCreacion TIMESTAMP,
-    fechaModificacion TIMESTAMP,
-    idPerfil INT,
-    FOREIGN KEY (idPerfil) REFERENCES profiles(id)
+    fecha_creacion TIMESTAMP,
+    fecha_modificacion TIMESTAMP,
+    profile_id INT,
+    FOREIGN KEY (profile_id) REFERENCES profiles(id)
 );
 
 -- Tabla de habilidad
@@ -146,9 +146,7 @@ CREATE TABLE referencias (
     telefono VARCHAR(50),
     relacion TEXT,
     fechaCreacion TIMESTAMP,
-    fechaModificacion TIMESTAMP,
-    idExperienciaLaboral INT,
-    FOREIGN KEY (idExperienciaLaboral) REFERENCES experienciaLaboral(id)
+    fechaModificacion TIMESTAMP
 );
 
 -- Tabla de logros
