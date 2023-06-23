@@ -20,18 +20,21 @@ public class ExperienciaLaboral {
     private LocalDate fechaInicio;
     private LocalDate fechaTermino;
     private String descripcion;
+    @Column(name = "referencia_tontacto")
     private String referenciaContacto;
     @Temporal(TemporalType.TIMESTAMP)
     private Instant fechaCreacion;
     @Temporal(TemporalType.TIMESTAMP)
     private Instant fechaModificacion;
-    private int idPerfil;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
+    private Perfil perfil;
     //private List<Referencia> referencias;
 
     public ExperienciaLaboral() {
     }
 
-    public ExperienciaLaboral(String empresa, String cargo, LocalDate fechaInicio, LocalDate fechaTermino, String descripcion, String referenciaContacto, Instant fechaCreacion, Instant fechaModificacion, int idPerfil) {
+    public ExperienciaLaboral(String empresa, String cargo, LocalDate fechaInicio, LocalDate fechaTermino, String descripcion, String referenciaContacto, Instant fechaCreacion, Instant fechaModificacion) {
         this.empresa = empresa;
         this.cargo = cargo;
         this.fechaInicio = fechaInicio;
@@ -40,7 +43,6 @@ public class ExperienciaLaboral {
         this.referenciaContacto = referenciaContacto;
         this.fechaCreacion = fechaCreacion;
         this.fechaModificacion = fechaModificacion;
-        this.idPerfil = idPerfil;
         //this.referencias = new ArrayList<>();
     }
 
@@ -54,7 +56,6 @@ public class ExperienciaLaboral {
         this.referenciaContacto = referenciaContacto;
         this.fechaCreacion = fechaCreacion;
         this.fechaModificacion = fechaModificacion;
-        this.idPerfil = idPerfil;
         //this.referencias = new ArrayList<>();
     }
 
@@ -130,11 +131,11 @@ public class ExperienciaLaboral {
         this.fechaModificacion = fechaModificacion;
     }
 
-    public int getIdPerfil() {
-        return idPerfil;
+    public Perfil getPerfil() {
+        return perfil;
     }
 
-    public void setIdPerfil(int idPerfil) {
-        this.idPerfil = idPerfil;
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 }
