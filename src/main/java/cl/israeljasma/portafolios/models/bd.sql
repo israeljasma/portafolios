@@ -73,7 +73,7 @@ CREATE TABLE work_experiences (
     fecha_inicio DATE,
     fecha_termino DATE,
     descripcion TEXT,
-    referencia_tontacto TEXT,
+    referencia_contacto TEXT,
     fecha_creacion TIMESTAMP,
     fecha_modificacion TIMESTAMP,
     profile_id INT,
