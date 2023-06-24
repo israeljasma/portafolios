@@ -22,6 +22,11 @@ public class workExperienceController {
     @Autowired
     private IExperienciaLaboralService experienciaLaboralService;
 
+    /**
+     Método para mostrar el listado de experiencias laborales en el sistema.
+     @param model El objeto Model para agregar atributos.
+     @return El nombre de la vista que muestra el listado de experiencias laborales.
+     */
     @RequestMapping(value = {"/dashboard/workexperience"}, method = RequestMethod.GET)
     public String listarExperienciaLaboral(Model model){
         model.addAttribute("titulo", "Listado de experiencias laborales");
@@ -30,6 +35,14 @@ public class workExperienceController {
         return "workExperience/workExperience";
     }
 
+    /**
+     Método para mostrar el formulario de edición de una experiencia laboral.
+     @param id El ID de la experiencia laboral a editar.
+     @param model El objeto Model para agregar atributos.
+     @return El nombre de la vista que muestra el formulario de edición de experiencia laboral.
+     Si el ID es válido, se recupera la experiencia laboral correspondiente y se muestra en el formulario.
+     Si el ID es inválido, se redirige a la página de listado de experiencias laborales.
+     */
     @RequestMapping(value = "/dashboard/workexperience/edit/{id}")
     public String editExperienciaLaboral(@PathVariable(value = "id") Long id, Model model){
         ExperienciaLaboral experienciaLaboral = null;
@@ -45,6 +58,11 @@ public class workExperienceController {
         return "workExperience/edit";
     }
 
+    /**
+     Método para mostrar el formulario de creación de una experiencia laboral.
+     @param model El objeto Model para agregar atributos.
+     @return El nombre de la vista que muestra el formulario de creación de experiencia laboral.
+     */
     @RequestMapping(value = {"/dashboard/workexperience/create"}, method = RequestMethod.GET)
     public String createExperienciaLaboral(Model model){
         ExperienciaLaboral experienciaLaboral = new ExperienciaLaboral();
@@ -54,6 +72,14 @@ public class workExperienceController {
         return "workExperience/create";
     }
 
+    /**
+     Método para guardar la información de una experiencia laboral en el sistema.
+     @param experienciaLaboral El objeto ExperienciaLaboral a guardar.
+     @param result El objeto BindingResult para validar los datos.
+     @param model El objeto Model para agregar atributos.
+     @param status El objeto SessionStatus para completar la sesión.
+     @return El nombre de la vista a la cual redirigir después de guardar la experiencia laboral.
+     */
     @RequestMapping(value = {"/dashboard/workexperience/create"}, method = RequestMethod.POST)
     public String saveExperienciaLaboral(@Valid ExperienciaLaboral experienciaLaboral, BindingResult result, Model model, SessionStatus status){
         System.out.println(experienciaLaboral.getCargo());
@@ -62,6 +88,11 @@ public class workExperienceController {
         return "redirect:/dashboard/workexperience";
     }
 
+    /**
+     Método para eliminar una experiencia laboral del sistema.
+     @param id El ID de la experiencia laboral a eliminar.
+     @return El nombre de la vista a la cual redirigir después de eliminar la experiencia laboral.
+     */
     @RequestMapping(value = "/dashboard/workexperience/eliminar/{id}")
     public String deleteExperienciaLaboral(@PathVariable(value = "id") Long id){
         if (id>0){

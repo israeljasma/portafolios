@@ -12,6 +12,11 @@ import static cl.israeljasma.portafolios.utils.GeneralUtils.getUsernameSession;
 @Controller
 public class DashboardController {
 
+    /**
+     Este método maneja la solicitud GET para el endpoint "/dashboard".
+     @param model el objeto modelo utilizado para pasar datos a la vista
+     @return el nombre de la vista para la página del panel de control
+     */
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
     public String dashboard(Model model){
         model.addAttribute("titulo", "Dashboard");
