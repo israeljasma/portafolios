@@ -80,7 +80,7 @@ public class ExperienciaLaboral {
     }
 
     public void setCargo(String cargo) {
-        cargo = cargo;
+        this.cargo = cargo;
     }
 
     public LocalDate getFechaInicio() {
