@@ -6,6 +6,8 @@
 <body>
 <header th:replace="layout/layout :: header"></header>
 <div class="container">
+    <h1 class="text-secondary border border-success border-top-0 border-start-0 border-end-0" th:text="${titulo}">
+    </h1>
     <form th:action="@{/dashboard/workexperience/create}" th:object="${experienciaLaboral}" method="post">
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Nombre de empresa:</label>
