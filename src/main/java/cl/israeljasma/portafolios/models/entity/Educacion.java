@@ -22,12 +22,14 @@ public class Educacion {
     private Instant fechaCreacion;
     @Temporal(TemporalType.TIMESTAMP)
     private Instant fechaModificacion;
-    private int idPerfil;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
+    private Perfil perfil;
 
     public Educacion() {
     }
 
-    public Educacion(String institucion, String titulo, LocalDate fechaInicio, LocalDate fechaTermino, String descripcion, String pais, Instant fechaCreacion, Instant fechaModificacion, int idPerfil) {
+    public Educacion(String institucion, String titulo, LocalDate fechaInicio, LocalDate fechaTermino, String descripcion, String pais, Instant fechaCreacion, Instant fechaModificacion, Perfil perfil) {
         this.institucion = institucion;
         this.titulo = titulo;
         this.fechaInicio = fechaInicio;
@@ -36,10 +38,10 @@ public class Educacion {
         this.pais = pais;
         this.fechaCreacion = fechaCreacion;
         this.fechaModificacion = fechaModificacion;
-        this.idPerfil = idPerfil;
+        this.perfil = perfil;
     }
 
-    public Educacion(Long id, String institucion, String titulo, LocalDate fechaInicio, LocalDate fechaTermino, String descripcion, String pais, Instant fechaCreacion, Instant fechaModificacion, int idPerfil) {
+    public Educacion(Long id, String institucion, String titulo, LocalDate fechaInicio, LocalDate fechaTermino, String descripcion, String pais, Instant fechaCreacion, Instant fechaModificacion, Perfil perfil) {
         this.id = id;
         this.institucion = institucion;
         this.titulo = titulo;
@@ -49,7 +51,7 @@ public class Educacion {
         this.pais = pais;
         this.fechaCreacion = fechaCreacion;
         this.fechaModificacion = fechaModificacion;
-        this.idPerfil = idPerfil;
+        this.perfil = perfil;
     }
 
     public Long getId() {
@@ -124,11 +126,11 @@ public class Educacion {
         this.fechaModificacion = fechaModificacion;
     }
 
-    public int getIdPerfil() {
-        return idPerfil;
+    public Perfil getPerfil() {
+        return perfil;
     }
 
-    public void setIdPerfil(int idPerfil) {
-        this.idPerfil = idPerfil;
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 }
