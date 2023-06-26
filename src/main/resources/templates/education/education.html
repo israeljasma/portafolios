@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+    <header th:replace="layout/layout :: header"></header>
+    <div class="container">
+        <h1 class="text-secondary border border-success border-top-0 border-start-0 border-end-0" th:text="${titulo}">
+        </h1>
+        <p><a th:href="@{/dashboard/education/create}" class="btn btn-success btn-xs">Crear educación</a></p>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Institución</th>
+                <th>Descripción</th>
+                <th>País</th>
+                <th>Fecha de inicio</th>
+                <th>Fecha de termino</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="education: ${educations}">
+                    <td th:text="${education.titulo}"></td>
+                    <td th:text="${education.institucion}"></td>
+                    <td th:text="${education.descripcion}"></td>
+                    <td th:text="${education.pais}"></td>
+                    <td th:text="${education.fechaInicio}"></td>
+                    <td th:text="${education.fechaTermino}"></td>
+                    <td><a class="btn btn-primary btn-xs" th:href="@{/dashboard/education/edit/} + ${education.id}" th:text="editar"></a></td>
+                    <td><a class="btn btn-danger btn-xs" th:href="@{/dashboard/education/eliminar/} + ${education.id}" th:text="eliminar"
+                           onclick="return confirm('¿Estas seguro que quieres eliminar?');"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+
+</html>
