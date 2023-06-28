@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+<header th:replace="layout/layout :: header"></header>
+<div class="container">
+    <h1 class="text-secondary border border-success border-top-0 border-start-0 border-end-0" th:text="${titulo}">
+    </h1>
+    <form th:action="@{/dashboard/workexperience/create}" th:object="${experienciaLaboral}" method="post">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Nombre de empresa:</label>
+            <div class="col-sm-6">
+                <input type="text" th:field="*{empresa}" class="form-control"
+                       th:errorclass="'form-control alert-danger'">
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('empresa')}"
+                       th:errors="*{empresa}"></small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Cargo:</label>
+            <div class="col-sm-6">
+                <input type="text" th:field="*{cargo}" class="form-control"
+                       th:errorclass="'form-control alert-danger'">
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('cargo')}"
+                       th:errors="*{cargo}"></small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Descripción:</label>
+            <div class="col-sm-6">
+                <input type="text" th:field="*{descripcion}" class="form-control"
+                       th:errorclass="'form-control alert-danger'">
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('descripcion')}"
+                       th:errors="*{descripcion}"></small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Fecha de inicio:</label>
+            <div class="col-sm-6">
+                <input type="date" th:field="*{fechaInicio}" class="form-control"
+                       th:errorclass="'form-control alert-danger'">
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaInicio')}"
+                       th:errors="*{fechaInicio}"></small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Fecha de termino:</label>
+            <div class="col-sm-6">
+                <input type="date" th:field="*{fechaTermino}" class="form-control"
+                       th:errorclass="'form-control alert-danger'">
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaTermino')}"
+                       th:errors="*{fechaTermino}"></small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Referencia de contacto:</label>
+            <div class="col-sm-6">
+                <input type="text" th:field="*{referenciaContacto}" class="form-control"
+                       th:errorclass="'form-control alert-danger'">
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('referenciaContacto')}"
+                       th:errors="*{referenciaContacto}"></small>
+            </div>
+        </div>
+
+        <input type="submit" value="Guardar cambios" class="btn btn-primary">
+    </form>
+</div>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${titulo}"></title>
+  <link th:href="@{/css/bootstrap4.css}" rel="stylesheet">
+  <link th:href="@{/css/customFinal.css}" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header_area">
+    <div class="main_menu">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container box_1620">
+          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <a class="navbar-brand logo_h"><img src="img/logo.png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav menu_nav ml-auto">
+              <li class="nav-item active"><a class="nav-link">Home</a></li>
+              <li class="nav-item"><a class="nav-link">Sobre mi</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!-- <header>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header> -->
+  <section class="home_banner_area">
+    <div class="container box_1620">
+      <div class="banner_inner d-flex align-items-center">
+        <div class="banner_content">
+          <div class="media">
+            <div class="d-flex">
+              <img th:src="@{/images/IMG_7938.jpg}">
+            </div>
+            <div class="media-body">
+              <div class="personal_text">
+                <h6>¡hola a todos!, me presento, me llamo</h6>
+                <h1 th:text="${perfil.nombres} + ' ' + ${perfil.apellidoPaterno} + ' ' + ${perfil.apellidoMaterno}">
+                </h1>
+                <h4>Full Stack Developer</h4>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio rerum, architecto vel dolorum nobis
+                  eius exercitationem blanditiis quis, ullam deserunt hic reiciendis adipisci consequatur nesciunt
+                  aliquam eos cum modi pariatur!</p>
+                <ul>
+                  <li>Lorem ipsum dolor</li>
+                  <li>Lorem ipsum dolor</li>
+                  <li>Lorem ipsum dolor</li>
+                  <li>Lorem ipsum dolor</li>
+                  <li>Lorem ipsum dolor</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <script th:href="@{/js/bootstrap.min.js}" rel="stylesheet"></script>
+  <script th:href="@{/js/popper.min.js}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+    integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

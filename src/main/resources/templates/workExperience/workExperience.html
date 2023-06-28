@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+    <header th:replace="layout/layout :: header"></header>
+    <div class="container">
+        <h1 class="text-secondary border border-success border-top-0 border-start-0 border-end-0" th:text="${titulo}">
+        </h1>
+        <p><a th:href="@{/dashboard/workexperience/create}" class="btn btn-success btn-xs">Crear experiencia laboral</a></p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre de empresa</th>
+                    <th>Cargo</th>
+                    <th>Descripción</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de termino</th>
+                    <th>Referencia</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="workExperience: ${workExperiences}">
+                    <td th:text="${workExperience.empresa}"></td>
+                    <td th:text="${workExperience.cargo}"></td>
+                    <td th:text="${workExperience.descripcion}"></td>
+                    <td th:text="${workExperience.fechaInicio}"></td>
+                    <td th:text="${workExperience.fechaTermino}"></td>
+                    <td th:text="${workExperience.referenciaContacto}"></td>
+                    <td><a class="btn btn-primary btn-xs" th:href="@{/dashboard/workexperience/edit/} + ${workExperience.id}" th:text="editar"></a></td>
+                    <td><a class="btn btn-danger btn-xs" th:href="@{/dashboard/workexperience/eliminar/} + ${workExperience.id}" th:text="eliminar"
+                            onclick="return confirm('¿Estas seguro que quieres eliminar?');"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+
+</html>
